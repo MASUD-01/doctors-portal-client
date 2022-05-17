@@ -14,14 +14,17 @@ import MyApppinments from './Pages/Dashboard/MyApppinments';
 import Myreview from './Pages/Dashboard/Myreview';
 import Myhistory from './Pages/Dashboard/Myhistory';
 import Users from './Pages/Dashboard/Users';
+import RequireAdmin from './Pages/Login/RequireAdmin';
+import AddDoctor from './Pages/Dashboard/AddDoctor';
 
 
 function App() {
   return (
-    <div className='max-w-7xl mx-auto px-12'>
+    <div className='max-w-7xl mx-auto lg:px-12' >
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
@@ -30,12 +33,13 @@ function App() {
           <Route index element={<MyApppinments></MyApppinments>}></Route>
           <Route path='review' element={<Myreview></Myreview>}></Route>
           <Route path='history' element={<Myhistory></Myhistory>}></Route>
-          <Route path='users' element={<Users></Users>}></Route>
+          <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+          <Route path='addDoctor' element={<RequireAdmin><AddDoctor></AddDoctor></RequireAdmin>}></Route>
 
         </Route>
       </Routes>
       <ToastContainer />
-    </div>
+    </div >
   );
 }
 

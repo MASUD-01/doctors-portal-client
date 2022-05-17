@@ -8,19 +8,19 @@ const MakeAppoinmaent = () => {
         <section style={{
             background: `url(${appoinment})`
         }}
-            className='flex justify-center items-center'>
-            <div className='flex-1 hidden lg:block'>
+            className='flex justify-center items-center max-w-xs lg:max-w-full mx-auto' >
+            <div className='flex-1 hidden lg:block' >
                 <img className='mt-[-70px] h-96' src={doctor} alt="" />
-            </div>
-            <div className='flex-1 pr-28'>
-                <h3 className='text-xl text-primary font-bold'>Appoinment</h3>
-                <h2 className='text-3xl text-white'>Make an appoinment Today</h2>
-                <p className='text-white'>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus eum cum eligendi ducimus beatae quibusdam blanditiis itaque voluptas ipsa laboriosam, dolorum dignissimos velit? Sequi iste blanditiis rerum dolorum saepe et quisquam doloremque, placeat totam ducimus animi, itaque, cum natus voluptatibus!
-                </p>
+            </div >
+            <div className='flex-1 lg:pr-28 p-3 rounded' >
+                <h3 className='text-xl text-primary font-bold text-center lg:text-left' > Appoinment</h3 >
+                <h2 className='text-3xl text-white' > Make an appoinment Today</h2 >
+                <p className='text-white' >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.Doloribus eum cum eligendi ducimus beatae quibusdam blanditiis itaque voluptas ipsa laboriosam, dolorum dignissimos velit ? Sequi iste blanditiis rerum dolorum saepe et quisquam doloremque, placeat totam ducimus animi, itaque, cum natus voluptatibus!
+                </p >
                 <PrimaryButton>Get Started</PrimaryButton>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 };
 
