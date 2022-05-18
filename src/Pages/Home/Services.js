@@ -37,7 +37,9 @@ const Services = () => {
                         key={service._id}
                         service={service}
                     ></Service>)
+
                 }
+
             </div >
         </div >
     );
