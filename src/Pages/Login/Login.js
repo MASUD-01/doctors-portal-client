@@ -11,16 +11,20 @@ import useToken from '../../Hooks/useToken';
 const Login = () => {
     const [signInWithGoogle, gUser, gloading, gerror] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    let navigate = useNavigate();
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
     const [token] = useToken(user || gUser);
+    let navigate = useNavigate();
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || "/home";
+
+
 
     useEffect(() => {
         if (token) {
@@ -41,8 +45,6 @@ const Login = () => {
 
 
     const onSubmit = data => {
-
-        console.log(data);
         signInWithEmailAndPassword(data.email, data.password)
     }
 
@@ -96,8 +98,8 @@ const Login = () => {
                                 }
                             />
                             < label className="label" >
-                                {errors.email?.type === 'required' && <span className="label-text-alt text-red-500" > {errors.password?.message}</span>}
-                                {errors.email?.type === 'minLength' && <span className="label-text-alt text-red-500" > {errors.password?.message}</span >}
+                                {errors.password?.type === 'required' && <span className="label-text-alt text-red-500" > {errors.password?.message}</span>}
+                                {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500" > {errors.password?.message}</span >}
 
 
                             </label >

@@ -22,7 +22,7 @@ const CheckoutForm = ({ appoinment }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data?.clientSecret) {
                     setClientSecret(data?.clientSecret)
                 }
@@ -68,7 +68,7 @@ const CheckoutForm = ({ appoinment }) => {
         else {
             setcardError('');
             setTransactionId(paymentIntent.id)
-            console.log(paymentIntent)
+            // console.log(paymentIntent)
             setSuccess('congrats.,your payment is completed')
 
 
@@ -88,7 +88,7 @@ const CheckoutForm = ({ appoinment }) => {
             }).then(res => res.json())
                 .then(data => {
                     setProcessing(false)
-                    console.log(data)
+                    // console.log(data)
                 })
         }
     }

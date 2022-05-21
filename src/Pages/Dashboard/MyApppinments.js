@@ -4,11 +4,17 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { format } from 'date-fns';
+// import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
 
 const MyApppinments = () => {
     const [appointments, setAppointments] = useState([]);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
+    // const [date, setDate] = useState(new Date());
+    const formattedDate = format(new Date(), 'PP');
+    console.log(formattedDate)
 
     useEffect(() => {
         if (user) {
@@ -36,7 +42,16 @@ const MyApppinments = () => {
     }, [user, navigate])
     return (
         <div>
-            <h2>My Appointments: {appointments.length}</h2>
+            {/* <div className='flex justify-center'>
+                <DayPicker
+
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+
+                ></DayPicker>
+            </div> */}
+            <h2 className='text-2xl'>My Appointments: {appointments.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -59,13 +74,17 @@ const MyApppinments = () => {
                                 <td>{a.treatment}</td>
                                 <td>
                                     {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}> <button className='btn btn-xs btn-success'>Pay</button></Link>}
+                                    {((a.date === formattedDate) && !a.paid) && <p><span className='text-red-500'>please pay to join the appoinment</span> </p>}
+                                    {((a.date === formattedDate) && a.paid) && <p><span className='text-red-500'>Get a zoom link:</span> </p>}
                                     {(a.price && a.paid) && <div>
                                         <p><span className=' btn btn-xs btn-success'>paid</span> </p>
                                         <p>Transaction id: <span className='text-success'> {a.transactionId}</span> </p>
                                     </div>}
                                 </td>
                             </tr>)
+
                         }
+
                     </tbody>
                 </table>
             </div >

@@ -10,7 +10,7 @@ const Service = ({ service, setTreatment }) => {
                     ? <span>{slots[0]}</span>
                     : <span className='text-red-500' > Try another date</span>
                 }</p>
-                <p>{slots.slice(0, 6).length} {slots.length > 1 ? 'spaces' : 'space'} Available</p>
+                <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} Available</p>
                 <p>Price: ${price}</p>
                 <div className="card-actions justify-center" >
                     <label
